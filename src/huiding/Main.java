@@ -9,8 +9,8 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 		int k = in.nextInt();
-		// int res = find(n, k);
-		int res = ysf(n, k);
+		 int res = find(n, k);
+		//int res = ysf(n, k);
 		System.out.println(res);
 		in.close();
 	}
@@ -21,9 +21,10 @@ public class Main {
 			list.add(i);
 		}
 		int k = 0;
-		for (int i = 1; i < total; i++) {
-			k = (k + cnt - 1) % list.size();
-			list.remove(k);
+		while(list.size()>1) {
+			list.remove(k++);
+			if(k>=list.size())
+				k = 0;
 		}
 
 		return list.get(0);
