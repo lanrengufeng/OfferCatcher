@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Solution2 {
     int ways(int distance, int couponTypes, int[] couponValues, int tolls, int[] tollDistances) {
         final int MOD = 1000000007;
-        int last = distance - tollDistances[tolls - 1];
+        int last = distance - tollDistances[tolls - 1];     //目的地和最后一个收费站的距离
         for (int i = tolls - 1; i >= 1; i--)
             tollDistances[i] -= tollDistances[i - 1];
         int res = 1;
@@ -14,6 +14,7 @@ public class Solution2 {
             nums[i] = combinationSum(couponValues, tollDistances[i]);
         for (int num : nums)
             res = (res * num) % MOD;
+        last = combinationSum(couponValues, last);
         res = (res * last) % MOD;
         return res;
     }
